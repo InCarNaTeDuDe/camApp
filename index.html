@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>QR Reader</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="qrcode.js"></script>
+</head>
+
+<body>
+    <div class="center" id="reader" style="width:300px;height:250px;"></div>
+    <h6 class="center">Result</h6>
+    <span id="read" class="center"></span>
+    <br>
+    <h6 class="center">Read Error (Debug only)</h6>
+    <span class="center">Will constantly show a message, can be ignored</span>
+    <span id="read_error" class="center"></span>
+    <br>
+    <h6 class="center">Video Error</h6>
+    <span id="vid_error" class="center"></span>
+</body>
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#reader').html5_qrcode(function(data) {
+            $('#read').html(data);
+        },
+        function(error) {
+            $('#read_error').html(error);
+        },
+        function(videoError) {
+            $('#vid_error').html(videoError);
+        }
+    );
+});
+</script>
+
+</html>
